@@ -4,12 +4,19 @@ function sortear() {
     let de = parseInt(document.getElementById("de").value);
     let ate = parseInt(document.getElementById("ate").value);
 
+    // Verifica se a quantidade solicitada é válida
+    if (quantidade > (ate - de + 1)) {
+        alert("A quantidade de números sorteados não pode ser maior que o intervalo especificado.");
+        return; // Interrompe a função
+    };
+
     // Gera números aleatórios únicos dentro do intervalo especificado.
     let numerosSorteados = new Set();
     while (numerosSorteados.size < quantidade) {
         let numero = gravarNumerosAleatorios(de, ate);
         numerosSorteados.add(numero);
     };
+
     // Converte o conjunto de números em um array e ordena em ordem crescente.
     let sorteados = Array.from(numerosSorteados).sort((a, b) => a - b);
 
